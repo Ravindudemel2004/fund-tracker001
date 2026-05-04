@@ -108,16 +108,32 @@ tbody tr:hover {
   background: #f1f5f9;
 }
 .index-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--accent);
   color: white;
-  width: 45px;
-  height: 32px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 32px;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  border-radius: 6px;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Fix table cell alignment */
+#contributor-table td:first-child {
+  width: 80px;
+  text-align: center;
+}
+
+#contributor-table th:first-child {
+  width: 80px;
+  text-align: center;
 }
 .name-cell { font-weight: 600; font-size: 1rem; }
 .amount-cell { 
