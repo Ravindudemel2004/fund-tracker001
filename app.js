@@ -1,5 +1,5 @@
 // 🔗 REPLACE WITH YOUR PUBLISHED GOOGLE SHEETS CSV URL
-const SHEET_URL = https://docs.google.com/spreadsheets/d/e/2PACX-1vRb9bK_83FfurYK6uWQYZ7jqEzrlyfXulFdmt9Tls-q7jhkV1nP2RwKszAiS9F8ds-opsqbOopFfUfW/pubhtml;
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRb9bK_83FfurYK6uWQYZ7jqEzrlyfXulFdmt9Tls-q7jhkV1nP2RwKszAiS9F8ds-opsqbOopFfUfW/pubhtml";
 
 let allData = [];
 let activeMonth = "";
