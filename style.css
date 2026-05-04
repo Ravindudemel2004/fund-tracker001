@@ -111,7 +111,7 @@ tbody tr:hover {
   display: inline-block;
   background: var(--accent);
   color: white;
-  width: 32px;
+  width: 45px;
   height: 32px;
   border-radius: 50%;
   text-align: center;
