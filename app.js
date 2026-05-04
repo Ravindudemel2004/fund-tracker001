@@ -4,7 +4,12 @@ const SHEET_URL = https://docs.google.com/spreadsheets/d/e/2PACX-1vRb9bK_83FfurY
 let allData = [];
 let activeMonth = "";
 
-const fmt = n => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n || 0);
+// ✅ LKR Formatter (Rs. 1,250 style, no decimals)
+const fmt = n => `Rs. ${Number(n || 0).toLocaleString('en-LK', { 
+  minimumFractionDigits: 0, 
+  maximumFractionDigits: 0 
+})}`;
+
 const cleanAmt = s => parseFloat(String(s || '').replace(/[^0-9.-]/g, '')) || 0;
 
 function renderTabs(months) {
@@ -25,7 +30,6 @@ function renderUI() {
   const monthEl = document.getElementById('month-total');
   const statusEl = document.getElementById('status');
 
-  // Filter & calculate
   const monthData = allData.filter(d => d.Month?.trim() === activeMonth);
   const monthSum = monthData.reduce((s, d) => s + cleanAmt(d.Amount), 0);
   const overallSum = allData.reduce((s, d) => s + cleanAmt(d.Amount), 0);
@@ -59,17 +63,16 @@ function fetchData() {
     download: true, header: true, skipEmptyLines: true,
     complete: (res) => {
       allData = res.data;
-      // Extract & sort months chronologically
       const months = [...new Set(allData.map(d => d.Month?.trim()).filter(Boolean))]
-                     .sort((a, b) => a.localeCompare(b)); // Works perfectly for YYYY-MM
+                     .sort((a, b) => a.localeCompare(b));
 
       if (!activeMonth || !months.includes(activeMonth)) {
-        activeMonth = months[months.length - 1] || ""; // Default to latest month
+        activeMonth = months[months.length - 1] || "";
       }
       renderTabs(months);
       renderUI();
     },
-    error: (err) => {
+    error: () => {
       document.getElementById('status').textContent = `⚠️ Error loading data`;
     }
   });
