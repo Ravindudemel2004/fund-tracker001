@@ -16,8 +16,36 @@
     <p class="subtitle">Updates automatically every 30 seconds</p>
   </header>
 
+  <div class="controls">
+    <input type="text" id="search-input" placeholder="🔍 Search by name or index..." class="search-box">
+    <div class="control-buttons">
+      <select id="sort-select" class="sort-select">
+        <option value="index">Sort by Index</option>
+        <option value="name">Sort by Name</option>
+        <option value="amount-desc">Amount (High to Low)</option>
+        <option value="amount-asc">Amount (Low to High)</option>
+      </select>
+      <button id="export-btn" class="export-btn">📥 Export</button>
+    </div>
+  </div>
+
   <main>
-    <div id="contributor-list" class="grid"></div>
+    <div class="table-container">
+      <table id="contributor-table">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Contribution</th>
+            <th>Month</th>
+          </tr>
+        </thead>
+        <tbody id="contributor-body">
+        </tbody>
+      </table>
+    </div>
+    
+    <div id="pagination" class="pagination"></div>
     <div id="status" class="status">Loading...</div>
   </main>
 
